@@ -3,10 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JSON_Editor"
+        xmlns:UserControls="clr-namespace:JSON_Editor.Views.UserControls"
+        xmlns:local="clr-namespace:JSON_Editor"    
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinHeight="200" MinWidth="400" MaxHeight="480" MaxWidth="720" ResizeMode="CanResizeWithGrip" UseLayoutRounding="True" Background="#1e1e23">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness='1' CornerRadius='10' CaptionHeight='0' />
+    </WindowChrome.WindowChrome>
+
     <Grid>
-        
+        <UserControls:WindowHeader CanMaximize="False" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource Style_StandardButton}" Width="150"  Height="50" Content="Open JSON" Click="Button_OpenJSON"></Button>
+            <Button Style="{StaticResource Style_StandardButton}" Width="150"  Height="50" Grid.Column="1" Content="Create JSON" Click="Button_CreateJSON"></Button>
+        </Grid>
     </Grid>
+
 </Window>
