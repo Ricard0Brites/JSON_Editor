@@ -41,8 +41,6 @@ namespace JSON_Editor.Views
         {
             if (OnLocationChosen != null)
                 OnLocationChosen.Invoke(TextBox.Text);
-            
-            Close();
         }
     }
 }

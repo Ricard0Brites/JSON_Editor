@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:UserControls="clr-namespace:JSON_Editor.Views.UserControls"
         xmlns:local="clr-namespace:JSON_Editor"    
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="200" MinWidth="400" MaxHeight="480" MaxWidth="720" ResizeMode="CanResizeWithGrip" UseLayoutRounding="True" Background="#1e1e23">
 
@@ -20,8 +21,8 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Style="{StaticResource Style_StandardButton}" Width="150"  Height="50" Content="Open JSON" Click="Button_OpenJSON"></Button>
-            <Button Style="{StaticResource Style_StandardButton}" Width="150"  Height="50" Grid.Column="1" Content="Create JSON" Click="Button_CreateJSON"></Button>
+            <Button Style="{StaticResource Style_StandardButton}" Width="150"  Height="50" Content="Open JSON" Command="{Binding OpenJSON_Event}"></Button>
+            <Button Style="{StaticResource Style_StandardButton}" Width="150"  Height="50" Grid.Column="1" Content="Create JSON" Command="{Binding CreateJSON_Event}"></Button>
         </Grid>
     </Grid>
 

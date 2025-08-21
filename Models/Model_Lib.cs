@@ -1,8 +1,6 @@
-﻿using System.Xml.Linq;
-
-namespace JSON_Editor.Models
+﻿namespace JSON_Editor.Models
 {
-    internal class Asset
+    public class Asset
     {
        public string Name { get; set; }
         public string  Type { get; set; }

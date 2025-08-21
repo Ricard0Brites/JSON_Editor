@@ -56,16 +56,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\JSON_EditorViewModel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\JSON_Editor.xaml.cs">
+      <DependentUpon>JSON_Editor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PathSelectWindow.xaml.cs">
       <DependentUpon>PathSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\WindowHeader.xaml.cs">
       <DependentUpon>WindowHeader.xaml</DependentUpon>
     </Compile>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\JSON_Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PathSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,8 +136,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Comands\" />
-    <Folder Include="Services\" />
+    <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="src\DemoAssets\1srvgk.png" />
