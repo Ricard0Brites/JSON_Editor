@@ -59,28 +59,6 @@ namespace JSON_Editor.ViewModels
         {
             //Instantiate a window that returns a path (the location the user wants to store the JSON)
             PathSelectWindow PathWindow = new PathSelectWindow();
-
-            //Bind Delegate
-            PathWindow.OnLocationChosen = (string FolderPath, string FileName) =>
-            {
-                if (FolderPath != "")
-                {
-                    //Close if path is valid
-                    PathWindow.Close();
-
-                    string FilePath = Path.Combine(FolderPath, (FileName + ".json"));
-
-                    FileStream Json = null;
-
-                    //Create JSON in the provided Location
-                    if (!File.Exists(FilePath))
-                        Json = File.Create(FilePath);
-
-                    
-                    //TODO - Open JSON Editor Window
-                    //TODO - Close all windows except the JSON editor
-                }
-            };
             
             //Show New Window
             PathWindow.ShowDialog();
@@ -100,16 +78,5 @@ namespace JSON_Editor.ViewModels
         }
 
         ObservableCollection<Asset> assets { get; set; }
-        
-        private Asset selectedAsset;
-        public Asset SelectedAsset
-        {
-            get { return SelectedAsset; }
-            set 
-            { 
-                SelectedAsset = value;
-                OnPropertyChanged();
-            }
-        }
     }
 }

@@ -56,7 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\TupleConverter.cs" />
     <Compile Include="ViewModels\JSON_EditorViewModel.cs" />
+    <Compile Include="ViewModels\PathSelectViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\JSON_EditorWindow.xaml.cs">
@@ -142,9 +144,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Themes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="src\DemoAssets\1srvgk.png" />
     <Resource Include="src\DemoAssets\3.gif" />
