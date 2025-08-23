@@ -27,12 +27,30 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Choose the location to save the new file in:" Foreground="White" Padding="20,0,0,0" VerticalAlignment="Center"></TextBlock>
-            <TextBox Name="TextBox" Grid.Row="1" Height="20" Margin="20,10,20,0" VerticalAlignment="Top"></TextBox>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="20,10,0,0" Foreground="White" Text="File Path"></TextBlock>
+                <TextBox Name="Path" Grid.Column="1" Height="20" Margin="20,10,20,0" VerticalAlignment="Top"></TextBox>
+            </Grid>
             <Button Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Height="40" Margin="20,0,20,0" Content="Browse" Style="{StaticResource Style_StandardButton}" Click="Button_Browse"></Button>
-            <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="50"  Margin="20,0,20,0" Content="Accept" Style="{StaticResource Style_StandardButton}" Click="Button_Accept"></Button>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="20,0,0,0" Foreground="White" Text="File Name "></TextBlock>
+                <TextBox Name="FileName" Grid.Column="1" Height="20"  VerticalAlignment="Top" Margin="20,0,20,0"></TextBox>
+            </Grid>
+            
+            <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="50"  Margin="20,0,20,0" Content="Accept" Style="{StaticResource Style_StandardButton}" Click="Button_Accept"></Button>
             
         </Grid>
     </Grid>

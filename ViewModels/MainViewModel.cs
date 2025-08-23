@@ -1,11 +1,41 @@
 ﻿using JSON_Editor.Models;
 using JSON_Editor.Views;
-using System.Collections.ObjectModel;
 using Microsoft.Win32;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 
 
 namespace JSON_Editor.ViewModels
 {
+
+    public class FileNameValidator
+    {
+        private static readonly string[] ReservedNames =
+        {
+        "CON", "PRN", "AUX", "NUL",
+        "COM1","COM2","COM3","COM4","COM5","COM6","COM7","COM8","COM9",
+        "LPT1","LPT2","LPT3","LPT4","LPT5","LPT6","LPT7","LPT8","LPT9"
+    };
+
+        public static bool IsValidFileName(string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+                return false;
+
+            // Invalid characters
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            if (fileName.Any(c => invalidChars.Contains(c)))
+                return false;
+
+            // Reserved names (case-insensitive)
+            if (ReservedNames.Contains(fileName.ToUpperInvariant()))
+                return false;
+
+            return true;
+        }
+    }
+
     public class MainViewModel : ViewModelBase
     {
         public MainViewModel()
@@ -31,13 +61,24 @@ namespace JSON_Editor.ViewModels
             PathSelectWindow PathWindow = new PathSelectWindow();
 
             //Bind Delegate
-            PathWindow.OnLocationChosen = (string ChosenLocation) =>
+            PathWindow.OnLocationChosen = (string FolderPath, string FileName) =>
             {
-                if (ChosenLocation != "")
+                if (FolderPath != "")
                 {
                     //Close if path is valid
                     PathWindow.Close();
-                    return;
+
+                    string FilePath = Path.Combine(FolderPath, (FileName + ".json"));
+
+                    FileStream Json = null;
+
+                    //Create JSON in the provided Location
+                    if (!File.Exists(FilePath))
+                        Json = File.Create(FilePath);
+
+                    
+                    //TODO - Open JSON Editor Window
+                    //TODO - Close all windows except the JSON editor
                 }
             };
             
@@ -48,7 +89,14 @@ namespace JSON_Editor.ViewModels
         {
             OpenFileDialog FileDialog = new OpenFileDialog();
             FileDialog.ShowDialog();
-            string file = FileDialog.FileName;
+
+            FileStream Json = null;
+
+            if (File.Exists(FileDialog.FileName))
+                Json = File.OpenWrite(FileDialog.FileName);
+
+            //TODO - Open JSON Editor
+            //TODO - Close All other windows
         }
 
         ObservableCollection<Asset> assets { get; set; }

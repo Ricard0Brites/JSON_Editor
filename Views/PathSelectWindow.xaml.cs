@@ -5,10 +5,12 @@ namespace JSON_Editor.Views
 {
     public partial class PathSelectWindow : Window
     {
+
+        //TODO - Refactor into MVVM
         #region Delegates
 
         //Triggers when the user clicks 'OK' in the browser picker
-        public delegate void OnLocationChosenCallback(string path);
+        public delegate void OnLocationChosenCallback(string path, string FileName);
         
         // Important: Sanitize Path Before Use
         public OnLocationChosenCallback OnLocationChosen;
@@ -28,7 +30,7 @@ namespace JSON_Editor.Views
             if (result.ToString() != string.Empty)
             {
                 SavedPath = openFileDlg.SelectedPath;
-                TextBox.Text = SavedPath;
+                Path.Text = SavedPath;
             }
         }
 
@@ -40,7 +42,7 @@ namespace JSON_Editor.Views
         private void Button_Accept(object sender, RoutedEventArgs e)
         {
             if (OnLocationChosen != null)
-                OnLocationChosen.Invoke(TextBox.Text);
+                OnLocationChosen.Invoke(Path.Text, FileName.Text);
         }
     }
 }
