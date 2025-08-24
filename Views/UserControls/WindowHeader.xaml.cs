@@ -6,6 +6,11 @@ namespace JSON_Editor.Views.UserControls
 {
     /// <summary>
     /// Creates an interaction header.
+    /// 
+    /// This component doesn't use MVVM to keep it simple because its generic.
+    /// Also this component doesn't keep information.
+    /// 
+    /// If needed this can be ported into MVVM to add functionality.
     /// </summary>
     public partial class WindowHeader : UserControl
     {

@@ -10,9 +10,8 @@ namespace JSON_Editor.Views
             var VM = new PathSelectViewModel();
             DataContext = VM;
 
+            //Callable from the ViewModel to close this window.
             VM.RequestWindowClose += () => Close();
-            
-            
             
             InitializeComponent();
         }

@@ -1,8 +1,5 @@
-﻿
-using System;
+﻿using System;
 using System.IO;
-using System.Windows;
-using System.Windows.Forms;
 
 namespace JSON_Editor.ViewModels
 {
