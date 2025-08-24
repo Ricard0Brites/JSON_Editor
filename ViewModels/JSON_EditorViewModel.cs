@@ -1,11 +1,12 @@
 ﻿using JSON_Editor.Models;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace JSON_Editor.ViewModels
 {
     public class JSON_EditorViewModel : ViewModelBase
     {
-
+        protected FileStream JSON_FileStream { private get;  set; }
         public JSON_EditorViewModel() 
         {
             //Create an instance of the observable collection
