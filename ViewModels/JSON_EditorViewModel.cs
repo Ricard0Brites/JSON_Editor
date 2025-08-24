@@ -7,7 +7,7 @@ namespace JSON_Editor.ViewModels
     public class JSON_EditorViewModel : ViewModelBase
     {
         protected FileStream JSON_FileStream { private get;  set; }
-        public JSON_EditorViewModel() 
+        public JSON_EditorViewModel(string FilePath) 
         {
             //Create an instance of the observable collection
             JSONItems = new ObservableCollection<Asset>();

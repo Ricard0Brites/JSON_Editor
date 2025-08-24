@@ -8,8 +8,12 @@ namespace JSON_Editor
     {
         public MainWindow()
         {
-            
-            DataContext = new MainViewModel();
+            MainViewModel VM = new MainViewModel();
+            DataContext = VM;
+
+            //Allows to close the window from the view model
+            VM.RequestWindowClose += () => Close();
+
             InitializeComponent();
         }
     }

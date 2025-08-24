@@ -1,8 +1,6 @@
-﻿using JSON_Editor.Models;
-using JSON_Editor.Views;
+﻿using JSON_Editor.Views;
 using Microsoft.Win32;
-using System.Collections.ObjectModel;
-using System.Linq;
+using System;
 using System.IO;
 
 
@@ -21,34 +19,51 @@ namespace JSON_Editor.ViewModels
             #endregion
         }
 
+        #region Actions
+        public Action RequestWindowClose;
+        #endregion
+
         #region Relays
         public RelayCommand CreateJSON_Event { get; }
         public RelayCommand OpenJSON_Event { get; }
 
-            #region Bound Functions
-            public void Create_JSON(object args = null)
+        #region Bound Functions
+        public void Create_JSON(object args = null)
+        {
+            //Instantiate a window that returns a path (the location the user wants to store the JSON)
+            PathSelectWindow PathWindow = new PathSelectWindow();
+
+            //Bind Delegate that closes the main window when json data is valid (to continue to the next screen)
+            PathSelectViewModel VM = (PathSelectViewModel)PathWindow.DataContext;
+            if (VM != null)
             {
-                //Instantiate a window that returns a path (the location the user wants to store the JSON)
-                PathSelectWindow PathWindow = new PathSelectWindow();
-            
-                //Show New Window
-                PathWindow.ShowDialog();
+                VM.OnWindowClosed += (EWindowCloseMethod Method) =>
+                {
+                    //Close the main window
+                    RequestWindowClose.Invoke();
+                };
             }
-            public void Open_JSON(object args = null)
+
+            //Show New Window
+            PathWindow.ShowDialog();
+        }
+        public void Open_JSON(object args = null)
         {
             OpenFileDialog FileDialog = new OpenFileDialog();
             FileDialog.ShowDialog();
 
-            FileStream Json = null;
-
             if (File.Exists(FileDialog.FileName))
-                Json = File.OpenWrite(FileDialog.FileName);
+            {
+                //Open JSON Editor
+                JSON_EditorWindow Editor = new JSON_EditorWindow(FileDialog.FileName);
+                Editor.Show();
 
-            //TODO - Open JSON Editor
-            //TODO - Close All other windows
+                //Close the main window
+                RequestWindowClose.Invoke(); 
+            }
         }
 
-            #endregion
+        #endregion
 
         #endregion
     }

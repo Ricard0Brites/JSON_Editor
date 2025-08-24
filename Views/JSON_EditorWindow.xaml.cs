@@ -5,9 +5,9 @@ namespace JSON_Editor.Views
 {
     public partial class JSON_EditorWindow : Window
     {
-        public JSON_EditorWindow()
+        public JSON_EditorWindow(string FilePath)
         {
-            DataContext = new JSON_EditorViewModel();
+            DataContext = new JSON_EditorViewModel(FilePath);
             InitializeComponent();
         }
     }

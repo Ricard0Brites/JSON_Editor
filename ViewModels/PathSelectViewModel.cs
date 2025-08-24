@@ -5,8 +5,20 @@ using System.Windows;
 
 namespace JSON_Editor.ViewModels
 {
+    enum EWindowCloseMethod
+    {
+        None, 
+        Accept,
+        Close
+    }
     internal class PathSelectViewModel : ViewModelBase
     {
+        #region Delegates
+
+        public delegate void OnWindowClosedDelegate(EWindowCloseMethod Method);
+        public OnWindowClosedDelegate OnWindowClosed;
+
+        #endregion
 
         private class FileNameValidator
         {
@@ -59,6 +71,7 @@ namespace JSON_Editor.ViewModels
         private string _FileNameText = "";
 
         public Action RequestWindowClose;
+        
 
         public PathSelectViewModel()
         {
@@ -115,6 +128,7 @@ namespace JSON_Editor.ViewModels
                 Json = File.Create(Path.Combine(_PathText, (_FileNameText + ".json")));
 
                 RequestWindowClose.Invoke();
+                OnWindowClosed.Invoke(EWindowCloseMethod.Accept);
 
                 //TODO - Open JSON Editor Window
                 //TODO - Close all windows except the JSON editor
