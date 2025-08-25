@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 
 namespace JSON_Editor.Views.UserControls
@@ -12,14 +13,14 @@ namespace JSON_Editor.Views.UserControls
     /// 
     /// If needed this can be ported into MVVM to add functionality.
     /// </summary>
-    public partial class WindowHeader : UserControl
+    public partial class WindowHeader : System.Windows.Controls.UserControl
     {
         public WindowHeader()
         {
             InitializeComponent();
         }
 
-        private void Grid_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (this == null)
                 return;

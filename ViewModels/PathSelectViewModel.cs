@@ -1,6 +1,5 @@
-﻿using System;
+﻿using JSON_Editor.Views;
 using System.IO;
-using System.Linq;
 using System.Windows;
 
 namespace JSON_Editor.ViewModels
@@ -15,8 +14,9 @@ namespace JSON_Editor.ViewModels
     {
         #region Delegates
 
+        //Its called when we actively close the window. It's not called when the user closes the window manually.
         public delegate void OnWindowClosedDelegate(EWindowCloseMethod Method);
-        public OnWindowClosedDelegate OnWindowClosed;
+        public OnWindowClosedDelegate? OnWindowClosed;
 
         #endregion
 
@@ -70,22 +70,21 @@ namespace JSON_Editor.ViewModels
         }
         private string _FileNameText = "";
 
-        public Action RequestWindowClose;
+        public Action? RequestWindowClose;
         
-
         public PathSelectViewModel()
         {
             OnBrowse_Event = new RelayCommand(OnBrowse);
             OnAccept_Event = new RelayCommand(OnAccept);
-
+           
         }
-        public RelayCommand OnBrowse_Event { get; }
-        public RelayCommand OnAccept_Event { get; }
+        public RelayCommand? OnBrowse_Event { get; }
+        public RelayCommand? OnAccept_Event { get; }
 
-        public void OnBrowse(object args = null)
+        public void OnBrowse(object? args = null)
         {           
 
-            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
+            FolderBrowserDialog openFileDlg = new FolderBrowserDialog();
             var result = openFileDlg.ShowDialog();
             if (result.ToString() != string.Empty)
             {
@@ -93,14 +92,14 @@ namespace JSON_Editor.ViewModels
                 PathText = openFileDlg.SelectedPath;
             }
         }
-        public void OnAccept(object args = null)
+        public void OnAccept(object? args = null)
         {
             if (_PathText != "")
             {
                 //Validate File Name
                 if (!FileNameValidator.IsValidFileName(_FileNameText))
                 {
-                    MessageBoxResult result = MessageBox.Show("Invalid File Name.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBoxResult result = System.Windows.MessageBox.Show("Invalid File Name.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -115,7 +114,7 @@ namespace JSON_Editor.ViewModels
 
                 if ( _PathText.IndexOfAny(InvalidChars) > 0)
                 {
-                    MessageBoxResult result = MessageBox.Show("Invalid Path.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBoxResult result = System.Windows.MessageBox.Show("Invalid Path.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -124,14 +123,15 @@ namespace JSON_Editor.ViewModels
                     Directory.CreateDirectory(_PathText);
 
                 //Create JSON in the provided Location
-                FileStream Json = null;
-                Json = File.Create(Path.Combine(_PathText, (_FileNameText + ".json")));
+                FileStream? Json = null;
+                Json = File.Create(Path.Combine(_PathText, (_FileNameText + ".json")));                
+                Json.Close();
 
-                RequestWindowClose.Invoke();
-                OnWindowClosed.Invoke(EWindowCloseMethod.Accept);
+                JSON_EditorWindow JSONEditor = new JSON_EditorWindow(Json.Name);
+                JSONEditor.Show();
 
-                //TODO - Open JSON Editor Window
-                //TODO - Close all windows except the JSON editor
+                RequestWindowClose?.Invoke();
+                OnWindowClosed?.Invoke(EWindowCloseMethod.Accept);
             }
         }
     }

@@ -19,7 +19,7 @@ namespace JSON_Editor.Views.UserControls.Templates
      *  |  |-----------------------|    |
      *  |-------------------------------|
      */
-    public partial class JSONEntry_Template : UserControl
+    public partial class JSONEntry_Template : System.Windows.Controls.UserControl
     {
         public JSONEntry_Template()
         {

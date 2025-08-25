@@ -1,8 +1,6 @@
 ﻿using JSON_Editor.Views;
 using Microsoft.Win32;
-using System;
 using System.IO;
-
 
 namespace JSON_Editor.ViewModels
 {
@@ -20,15 +18,15 @@ namespace JSON_Editor.ViewModels
         }
 
         #region Actions
-        public Action RequestWindowClose;
+        public Action? RequestWindowClose;
         #endregion
 
         #region Relays
-        public RelayCommand CreateJSON_Event { get; }
-        public RelayCommand OpenJSON_Event { get; }
+        public RelayCommand? CreateJSON_Event { get; }
+        public RelayCommand? OpenJSON_Event { get; }
 
         #region Bound Functions
-        public void Create_JSON(object args = null)
+        public void Create_JSON(object? args = null)
         {
             //Instantiate a window that returns a path (the location the user wants to store the JSON)
             PathSelectWindow PathWindow = new PathSelectWindow();
@@ -40,16 +38,16 @@ namespace JSON_Editor.ViewModels
                 VM.OnWindowClosed += (EWindowCloseMethod Method) =>
                 {
                     //Close the main window
-                    RequestWindowClose.Invoke();
+                    RequestWindowClose?.Invoke();
                 };
             }
 
             //Show New Window
             PathWindow.ShowDialog();
         }
-        public void Open_JSON(object args = null)
+        public void Open_JSON(object? args = null)
         {
-            OpenFileDialog FileDialog = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog FileDialog = new Microsoft.Win32.OpenFileDialog();
             FileDialog.ShowDialog();
 
             if (File.Exists(FileDialog.FileName))
@@ -59,7 +57,7 @@ namespace JSON_Editor.ViewModels
                 Editor.Show();
 
                 //Close the main window
-                RequestWindowClose.Invoke(); 
+                RequestWindowClose?.Invoke(); 
             }
         }
 

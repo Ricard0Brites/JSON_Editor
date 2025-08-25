@@ -24,7 +24,7 @@
 
 
             <!-- Close & Minimize Buttons -->
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="2" x:Name="Grid">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"></ColumnDefinition>

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+VisualStudioVersion = 17.14.36408.4 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON_Editor", "JSON_Editor.csproj", "{2168F0EC-F518-402C-AF37-69B0184D35C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON_Editor", "JSON_Editor.csproj", "{0A451EDD-ED20-4638-8905-CABDCA1D3562}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2168F0EC-F518-402C-AF37-69B0184D35C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2168F0EC-F518-402C-AF37-69B0184D35C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2168F0EC-F518-402C-AF37-69B0184D35C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2168F0EC-F518-402C-AF37-69B0184D35C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A451EDD-ED20-4638-8905-CABDCA1D3562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A451EDD-ED20-4638-8905-CABDCA1D3562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A451EDD-ED20-4638-8905-CABDCA1D3562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A451EDD-ED20-4638-8905-CABDCA1D3562}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1C740198-4DBC-487A-910E-258FC01AEC54}
+		SolutionGuid = {AD0117B5-8DE4-4C54-8A5F-891A4EC1D3F5}
 	EndGlobalSection
 EndGlobal
