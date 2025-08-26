@@ -68,20 +68,34 @@ namespace JSON_Editor.ViewModels
             //Start an auto-saving timer
             StartAutoSaveTimer();
         }
+        #region Assets
         public ObservableCollection<Asset>? JSONItems { get; set; }
+
+        private bool IsAssetPoolDirty()
+        {
+            if (JSONItems == null)
+                return true;
+
+            foreach (Asset A in JSONItems)
+            {
+                if (A.IsDirty())
+                    return true;
+            }
+            return false;
+        }
+        #endregion
 
         public int NumOfItems => JSONItems?.Count ?? 0;
 
         //This event is bound in code-behind and called on window close event trigger
         public void OnTryClosingWindow(object? Obj, CancelEventArgs? CancelEventArgs)
         {
-            /*
-             * TODO: 
-             *  Is Dirty?
-             *      Yes: Create pop-up asking user to save unsaved changes (yes/no)
-             *      No: Do nothing and let program stop
-             */
-                
+            if(IsAssetPoolDirty())
+            {
+                //Create pop-up asking user to save unsaved changes (yes/no)
+                //Yes: Save
+                //No: Return
+            }
         }
 
         #region Save Timer

@@ -8,19 +8,26 @@
         xmlns:Templates="clr-namespace:JSON_Editor.Views.UserControls.Templates"
         mc:Ignorable="d"
         x:Name="EditorWindow"
-        Title="MainWindow" MinHeight="300" MinWidth="1000" ResizeMode="CanResizeWithGrip" UseLayoutRounding="True" Background="#1e1e23"
-        >
+        Title="MainWindow"
+        MinHeight="300"
+        MinWidth="1000"
+        ResizeMode="CanResizeWithGrip"
+        UseLayoutRounding="True"
+        Background="#1e1e23">
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness='1' CornerRadius='10' CaptionHeight='0' />
+        <WindowChrome GlassFrameThickness='1'
+                      CornerRadius='10'
+                      CaptionHeight='0' />
     </WindowChrome.WindowChrome>
 
     <Window.Resources>
         <Style TargetType="TextBox">
-            <Setter Property="CaretBrush" Value="White"></Setter>
+            <Setter Property="CaretBrush"
+                    Value="White"></Setter>
         </Style>
     </Window.Resources>
-    
-    
+
+
     <Grid>
         <!-- Row Definitions -->
         <Grid.RowDefinitions>
@@ -30,7 +37,8 @@
 
         <!-- Grid Content-->
         <UserControls:WindowHeader CanMaximize="False" />
-        <Grid Margin="5,0,5,5" Grid.Row="1">
+        <Grid Margin="5,0,5,5"
+              Grid.Row="1">
 
             <!-- Column Definitions -->
             <Grid.ColumnDefinitions>
@@ -39,87 +47,124 @@
             </Grid.ColumnDefinitions>
 
             <!-- Grid Content-->
-            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="0,0,2,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          Padding="0,0,2,0">
                 <StackPanel>
-                    <StackPanel Margin="10,0,5,0" >
+                    <StackPanel Margin="10,0,5,0">
                         <!-- Header -->
                         <Grid Height="20">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[0], RelativeSource={RelativeSource AncestorType=Window}}"/>
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[1], RelativeSource={RelativeSource AncestorType=Window}}"/>
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[2], RelativeSource={RelativeSource AncestorType=Window}}"/>
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[3], RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                <ColumnDefinition Width="{Binding ColumnWidthsVal[0], RelativeSource={RelativeSource AncestorType=Window}}" />
+                                <ColumnDefinition Width="{Binding ColumnWidthsVal[1], RelativeSource={RelativeSource AncestorType=Window}}" />
+                                <ColumnDefinition Width="{Binding ColumnWidthsVal[2], RelativeSource={RelativeSource AncestorType=Window}}" />
+                                <ColumnDefinition Width="{Binding ColumnWidthsVal[3], RelativeSource={RelativeSource AncestorType=Window}}" />
                             </Grid.ColumnDefinitions>
                             <!-- File Type Table Header Label -->
-                            <Border BorderThickness="1" BorderBrush="White">
-                                <TextBlock Margin="0,0,0,0" 
-                                            Grid.Column="0" TextDecorations="None" 
-                                            TextAlignment="Center" 
-                                            Text="File Type" FontSize="13" Background="#626262" Foreground="White"                                  
-                                ></TextBlock>
+                            <Border BorderThickness="1"
+                                    BorderBrush="White">
+                                <TextBlock Margin="0,0,0,0"
+                                           Grid.Column="0"
+                                           TextDecorations="None"
+                                           TextAlignment="Center"
+                                           Text="File Type"
+                                           FontSize="13"
+                                           Background="#626262"
+                                           Foreground="White"></TextBlock>
                             </Border>
                             <!-- Path Table Header Label -->
-                            <Border BorderThickness="1" BorderBrush="White" Grid.Column="1">
+                            <Border BorderThickness="1"
+                                    BorderBrush="White"
+                                    Grid.Column="1">
                                 <TextBlock Margin="0,0,0,0"
-                                    TextDecorations="None" 
-                                    TextAlignment="Center" 
-                                    Text="Path" FontSize="13" Background="#626262" Foreground="White"
-                                >
+                                           TextDecorations="None"
+                                           TextAlignment="Center"
+                                           Text="Path"
+                                           FontSize="13"
+                                           Background="#626262"
+                                           Foreground="White">
                                 </TextBlock>
                             </Border>
                             <!-- Size Mb Table Header Label -->
-                            <Border BorderThickness="1" BorderBrush="White" Grid.Column="2">
-                                <TextBlock Margin="0,0,0,0" Foreground="White"
-                                        TextDecorations="None"
-                                    TextAlignment="Center" Text="Size Mb" 
-                                    FontSize="13" Background="#626262"
-                                >
+                            <Border BorderThickness="1"
+                                    BorderBrush="White"
+                                    Grid.Column="2">
+                                <TextBlock Margin="0,0,0,0"
+                                           Foreground="White"
+                                           TextDecorations="None"
+                                           TextAlignment="Center"
+                                           Text="Size Mb"
+                                           FontSize="13"
+                                           Background="#626262">
                                 </TextBlock>
                             </Border>
                             <!-- Tags Table Header Label -->
-                            <Border BorderThickness="1" BorderBrush="White" Grid.Column="3">
-                                <TextBlock Margin="0,0,0,0" 
-                                    TextDecorations="None" 
-                                    TextAlignment="Center"  
-                                    Text="Tags" FontSize="13" Background="#626262" Foreground="White"
-                                >
+                            <Border BorderThickness="1"
+                                    BorderBrush="White"
+                                    Grid.Column="3">
+                                <TextBlock Margin="0,0,0,0"
+                                           TextDecorations="None"
+                                           TextAlignment="Center"
+                                           Text="Tags"
+                                           FontSize="13"
+                                           Background="#626262"
+                                           Foreground="White">
                                 </TextBlock>
                             </Border>
                         </Grid>
                         <!-- End of Header -->
 
                         <!-- Entries -->
-                        <ItemsControl Name="ItemsList" ItemsSource="{Binding JSONItems}">
+                        <ItemsControl Name="ItemsList"
+                                      ItemsSource="{Binding JSONItems}">
+
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <!-- Each Object gets its own isntance of a UserControl -->
-                                    <Templates:JSONEntry_Template ColumnWidths="{Binding ColumnWidthsVal, RelativeSource={RelativeSource AncestorType=Window}}" ></Templates:JSONEntry_Template>
+                                    <Templates:JSONEntry_Template ColumnWidths="{Binding ColumnWidthsVal, RelativeSource={RelativeSource AncestorType=Window}}">
+                                    </Templates:JSONEntry_Template>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                         <!-- End Of Entries -->
-                        
+
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
 
             <!-- Side Panel -->
-            <Grid Grid.Column="1" Margin="5,0,5,0" MaxWidth="500">
+            <Grid Grid.Column="1"
+                  Margin="5,0,5,0"
+                  MaxWidth="500">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="55"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Selected Item data" FontSize="16" Foreground="White" HorizontalAlignment="Center" Padding="0,0,0,5"></TextBlock>
-                <ScrollViewer Grid.Row="1" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
-                    <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <TextBlock Text="{Binding SelectedItemData}"  TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="Selected Item data"
+                           FontSize="16"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           Padding="0,0,0,5"></TextBlock>
+                <ScrollViewer Grid.Row="1"
+                              VerticalAlignment="Stretch"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Hidden">
+                    <Border BorderBrush="White"
+                            BorderThickness="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch">
+                        <TextBlock Text="{Binding SelectedItemData}"
+                                   TextWrapping="Wrap"></TextBlock>
                     </Border>
                 </ScrollViewer>
-                <Button Grid.Row="2" Height="50" Content="Save JSON" VerticalAlignment="Bottom"></Button>
+                <Button Grid.Row="2"
+                        Height="50"
+                        Content="Save JSON"
+                        VerticalAlignment="Bottom"></Button>
             </Grid>
             <!-- Side Panel End -->
-            
+
         </Grid>
     </Grid>
 </Window>
