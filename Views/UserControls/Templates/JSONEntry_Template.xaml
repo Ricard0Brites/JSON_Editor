@@ -7,43 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <!-- Entry Template -->
-    <Grid Height="25">
+    <Grid Height="50" Grid.IsSharedSizeScope="True">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="{Binding ColumnWidths[0], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            <ColumnDefinition Width="{Binding ColumnWidths[1], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            <ColumnDefinition Width="{Binding ColumnWidths[2], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            <ColumnDefinition Width="{Binding ColumnWidths[3], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
         </Grid.ColumnDefinitions>
         
-        <TextBox Margin="0,0,0,0" VerticalAlignment="Center" 
+        <TextBox Name="FileType" TextWrapping="Wrap" CaretBrush="White"  Margin="0,5,0,0" VerticalAlignment="Stretch"
              TextDecorations="None" 
              TextAlignment="Center" BorderThickness="1,1,1,1" 
              Text="{Binding Type}" FontSize="12" Background="#00ffffff"
              Foreground="White" Cursor="IBeam"
         ></TextBox>
-        <TextBox Margin="0,0,0,0" VerticalAlignment="Center" 
+        <TextBox Name="FilePath" TextWrapping="Wrap" CaretBrush="White" Margin="0,5,0,0" VerticalAlignment="Stretch"
          Grid.Column="1" TextDecorations="None" 
          TextAlignment="Center" BorderThickness="0,1,1,1" 
          Text="{Binding Path}" FontSize="12" Background="#00ffffff"
          Foreground="White" Cursor="IBeam"
         >
         </TextBox>
-        <TextBox Margin="0,0,0,0" VerticalAlignment="Center" 
+        <TextBox Name="SizeMb" TextWrapping="Wrap" CaretBrush="White" Margin="0,5,0,0" VerticalAlignment="Stretch"
          Grid.Column="2" TextDecorations="None" 
          TextAlignment="Center" BorderThickness="0,1,1,1" 
          Text="{Binding SizeMB}" FontSize="12" Background="#00ffffff"
          Foreground="White" Cursor="IBeam"
         >
         </TextBox>
-        <TextBox Margin="0,0,0,0" VerticalAlignment="Center" 
+        <TextBox Name="FileTags" TextWrapping="Wrap" CaretBrush="White" Margin="0,5,0,0" VerticalAlignment="Stretch"
          Grid.Column="3" TextDecorations="None" 
-         TextAlignment="Center" BorderThickness="0,1,1,1" 
-         Text="{Binding TagsDisplay, Mode=OneWay}" IsReadOnly="True" FontSize="12" Background="#00ffffff"
+         TextAlignment="Center" BorderThickness="1,1,1,1" 
+         Text="{Binding TagsDisplay}" FontSize="12" Background="#00ffffff"
          Foreground="White"
         >
         </TextBox>
-
     </Grid>
     <!-- End of Entry Template -->
 </UserControl>

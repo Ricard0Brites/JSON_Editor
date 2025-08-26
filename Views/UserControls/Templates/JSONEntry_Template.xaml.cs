@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace JSON_Editor.Views.UserControls.Templates
 {
@@ -24,6 +26,22 @@ namespace JSON_Editor.Views.UserControls.Templates
         public JSONEntry_Template()
         {
             InitializeComponent();
+        }
+
+
+        // DP holds GridLength, not double
+        public static readonly DependencyProperty ColumnWidthsProperty =
+            DependencyProperty.Register(
+                nameof(ColumnWidths),
+                typeof(ObservableCollection<GridLength>),
+                typeof(JSONEntry_Template),
+                // do NOT put a new collection here; it's shared across instances
+                new PropertyMetadata(null));
+
+        public ObservableCollection<GridLength> ColumnWidths
+        {
+            get => (ObservableCollection<GridLength>)GetValue(ColumnWidthsProperty);
+            set => SetValue(ColumnWidthsProperty, value);
         }
     }
 }
