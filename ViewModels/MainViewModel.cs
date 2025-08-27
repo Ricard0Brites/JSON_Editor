@@ -1,5 +1,4 @@
 ﻿using JSON_Editor.Views;
-using Microsoft.Win32;
 using System.IO;
 
 namespace JSON_Editor.ViewModels

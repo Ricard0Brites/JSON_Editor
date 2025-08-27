@@ -1,14 +1,15 @@
 ﻿using JSON_Editor.ViewModels;
+using System.Text.Json.Serialization;
 
 namespace JSON_Editor.Models
 {
     public class Asset : ViewModelBase
     {
         //Parameters
-        private string _Name;
+        private string? _Name;
         public string Name
         {
-            get => _Name;
+            get => _Name == null ? "" : _Name;
             set
             {
                 if (_Name == value)
@@ -23,13 +24,10 @@ namespace JSON_Editor.Models
                 OnPropertyChanged();
             }
         }
-        private string _Type;
+        private string? _Type;
         public string Type
         {
-            get
-            {
-                return _Type;
-            }
+            get => _Type == null ? "" : _Type;
             set
             {
                 if (_Type == value)
@@ -44,10 +42,10 @@ namespace JSON_Editor.Models
                 OnPropertyChanged();
             }
         }
-        private string _Path;
+        private string? _Path;
         public string Path
         {
-            get => _Path;
+            get => _Path == null ? "" : _Path;
             set
             {
                 if (_Path == value)
@@ -62,15 +60,15 @@ namespace JSON_Editor.Models
                 OnPropertyChanged();
             }
         }
-        private float _SizeMB;
-        public float SizeMB
+        private float? _SizeB;
+        public float? SizeB
         {
-            get => _SizeMB;
+            get => _SizeB == null ? 0 : _SizeB;
             set
             {
-                if (_SizeMB == value)
+                if (_SizeB == value)
                     return;
-                _SizeMB = value;
+                _SizeB = value;
                 if (!_HasInit[3])
                 {
                     _HasInit[3] = true;
@@ -87,23 +85,26 @@ namespace JSON_Editor.Models
         //This function should only be called when the json is saved
         public void Clean() { _IsDirty = false; }
 
+        [JsonIgnore]
         public string TagsDisplay { get => GetTagsReadable(); set => SetTags(value); }
 
-        public Asset(string name, string type, string path, float sizeMB, List<string> tags)
+        public Asset(string name, string type, string path, float sizeMB, List<string> tags, bool IsDirty)
         {
             Name = name;
             Type = type;
             Path = path;
-            SizeMB = sizeMB;
+            SizeB = sizeMB;
             Tags = tags;
+            _IsDirty = IsDirty;
         }
         public Asset()
         {
             Name = "";
             Type = "";
             Path = "";
-            SizeMB = 0;
+            SizeB = 0;
             Tags = new List<string>([]);
+            _IsDirty = true;
         }
 
         /* -------------------- */

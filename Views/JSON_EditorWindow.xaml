@@ -50,85 +50,87 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                           HorizontalScrollBarVisibility="Auto"
                           Padding="0,0,2,0">
-                <StackPanel>
-                    <StackPanel Margin="10,0,5,0">
-                        <!-- Header -->
-                        <Grid Height="20">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[0], RelativeSource={RelativeSource AncestorType=Window}}" />
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[1], RelativeSource={RelativeSource AncestorType=Window}}" />
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[2], RelativeSource={RelativeSource AncestorType=Window}}" />
-                                <ColumnDefinition Width="{Binding ColumnWidthsVal[3], RelativeSource={RelativeSource AncestorType=Window}}" />
-                            </Grid.ColumnDefinitions>
-                            <!-- File Type Table Header Label -->
-                            <Border BorderThickness="1"
-                                    BorderBrush="White">
-                                <TextBlock Margin="0,0,0,0"
-                                           Grid.Column="0"
-                                           TextDecorations="None"
-                                           TextAlignment="Center"
-                                           Text="File Type"
-                                           FontSize="13"
-                                           Background="#626262"
-                                           Foreground="White"></TextBlock>
-                            </Border>
-                            <!-- Path Table Header Label -->
-                            <Border BorderThickness="1"
-                                    BorderBrush="White"
-                                    Grid.Column="1">
-                                <TextBlock Margin="0,0,0,0"
-                                           TextDecorations="None"
-                                           TextAlignment="Center"
-                                           Text="Path"
-                                           FontSize="13"
-                                           Background="#626262"
-                                           Foreground="White">
-                                </TextBlock>
-                            </Border>
-                            <!-- Size Mb Table Header Label -->
-                            <Border BorderThickness="1"
-                                    BorderBrush="White"
-                                    Grid.Column="2">
-                                <TextBlock Margin="0,0,0,0"
-                                           Foreground="White"
-                                           TextDecorations="None"
-                                           TextAlignment="Center"
-                                           Text="Size Mb"
-                                           FontSize="13"
-                                           Background="#626262">
-                                </TextBlock>
-                            </Border>
-                            <!-- Tags Table Header Label -->
-                            <Border BorderThickness="1"
-                                    BorderBrush="White"
-                                    Grid.Column="3">
-                                <TextBlock Margin="0,0,0,0"
-                                           TextDecorations="None"
-                                           TextAlignment="Center"
-                                           Text="Tags"
-                                           FontSize="13"
-                                           Background="#626262"
-                                           Foreground="White">
-                                </TextBlock>
-                            </Border>
-                        </Grid>
-                        <!-- End of Header -->
+                <StackPanel Margin="10,0,0,0"
+                            HorizontalAlignment="Left"
+                            Width="auto">
+                    <!-- Header -->
+                    <Grid Height="20" Margin="0,0,0,5"
+                          HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding ColumnWidthsVal[0], RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <ColumnDefinition Width="{Binding ColumnWidthsVal[1], RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <ColumnDefinition Width="{Binding ColumnWidthsVal[2], RelativeSource={RelativeSource AncestorType=Window}}" />
+                            <ColumnDefinition Width="{Binding ColumnWidthsVal[3], RelativeSource={RelativeSource AncestorType=Window}}" />
+                        </Grid.ColumnDefinitions>
+                        <!-- File Type Table Header Label -->
+                        <Border BorderThickness="1"
+                                BorderBrush="White">
+                            <TextBlock Grid.Column="0"
+                                       TextDecorations="None"
+                                       TextAlignment="Center"
+                                       Text="File Type"
+                                       FontSize="13"
+                                       Background="#626262"
+                                       Foreground="White"></TextBlock>
+                        </Border>
+                        <!-- Path Table Header Label -->
+                        <Border BorderThickness="1"
+                                BorderBrush="White"
+                                Grid.Column="1">
+                            <TextBlock TextDecorations="None"
+                                       TextAlignment="Center"
+                                       Text="Path"
+                                       FontSize="13"
+                                       Background="#626262"
+                                       Foreground="White">
+                            </TextBlock>
+                        </Border>
+                        <!-- Size in bytes Table Header Label -->
+                        <Border BorderThickness="1"
+                                BorderBrush="White"
+                                Grid.Column="2">
+                            <TextBlock Foreground="White"
+                                       TextDecorations="None"
+                                       TextAlignment="Center"
+                                       Text="Size B"
+                                       FontSize="13"
+                                       Background="#626262">
+                            </TextBlock>
+                        </Border>
+                        <!-- Tags Table Header Label -->
+                        <Border BorderThickness="1"
+                                BorderBrush="White"
+                                Grid.Column="3">
+                            <TextBlock TextDecorations="None"
+                                       TextAlignment="Center"
+                                       Text="Tags"
+                                       FontSize="13"
+                                       Background="#626262"
+                                       Foreground="White">
+                            </TextBlock>
+                        </Border>
+                    </Grid>
+                    <!-- End of Header -->
 
-                        <!-- Entries -->
-                        <ItemsControl Name="ItemsList"
-                                      ItemsSource="{Binding JSONItems}">
+                    <!-- Entries -->
+                    <ListView Name="ItemsList"
+                              Style="{StaticResource Style_ListView_NoFootPrint}"
+                              ItemsSource="{Binding JSONItems}"
+                              HorizontalAlignment="Left"
+                              HorizontalContentAlignment="Left"
+                              SelectedItem="{Binding CurrentAsset}">
 
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <!-- Each Object gets its own isntance of a UserControl -->
-                                    <Templates:JSONEntry_Template ColumnWidths="{Binding ColumnWidthsVal, RelativeSource={RelativeSource AncestorType=Window}}">
-                                    </Templates:JSONEntry_Template>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                        <!-- End Of Entries -->
-
-                    </StackPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Each Object gets its own isntance of a UserControl -->
+                                <Templates:JSONEntry_Template Padding="0"
+                                                              Margin="0"
+                                                              ColumnWidths="{Binding ColumnWidthsVal, RelativeSource={RelativeSource AncestorType=Window}}">
+                                </Templates:JSONEntry_Template>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!-- End Of Entries -->
                 </StackPanel>
             </ScrollViewer>
 
@@ -138,30 +140,36 @@
                   MaxWidth="500">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="55"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Selected Item data"
-                           FontSize="16"
-                           Foreground="White"
-                           HorizontalAlignment="Center"
-                           Padding="0,0,0,5"></TextBlock>
-                <ScrollViewer Grid.Row="1"
-                              VerticalAlignment="Stretch"
-                              VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Hidden">
-                    <Border BorderBrush="White"
-                            BorderThickness="1"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch">
-                        <TextBlock Text="{Binding SelectedItemData}"
-                                   TextWrapping="Wrap"></TextBlock>
-                    </Border>
-                </ScrollViewer>
-                <Button Grid.Row="2"
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Height="25"
+                            Content="Add Entry"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Margin="0,1,0,1"
+                            Command="{Binding AddEntry}"></Button>
+                    <Button Grid.Column="1"
+                            Height="25"
+                            Content="Remove Entry"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Margin="1,1,0,1"
+                            Command="{Binding RemoveEntry}"></Button>
+                </Grid>
+                <Button Grid.Row="3"
                         Height="50"
                         Content="Save JSON"
-                        VerticalAlignment="Bottom"></Button>
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        FontSize="10"
+                        Command="{Binding RequestSave}"></Button>
+
             </Grid>
             <!-- Side Panel End -->
 

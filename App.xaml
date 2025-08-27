@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="/Views/Styles/Style_CloseButton.xaml" />
                 <ResourceDictionary Source="/Views/Styles/Style_StandardHeaderButton.xaml" />
                 <ResourceDictionary Source="/Views/Styles/Style_StandardButton.xaml" />
+                <ResourceDictionary Source="/Views/Styles/Style_ListViewNoFootPrint.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

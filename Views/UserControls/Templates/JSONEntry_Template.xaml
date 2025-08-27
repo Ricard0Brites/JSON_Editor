@@ -1,47 +1,87 @@
 ﻿<UserControl x:Class="JSON_Editor.Views.UserControls.Templates.JSONEntry_Template"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:JSON_Editor.Views.UserControls.Templates"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <!-- Entry Template -->
-    <Grid Height="50" Grid.IsSharedSizeScope="True">
+    <Grid
+          Grid.IsSharedSizeScope="True"
+          Margin="0,0,0,5">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding ColumnWidths[0], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-            <ColumnDefinition Width="{Binding ColumnWidths[1], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-            <ColumnDefinition Width="{Binding ColumnWidths[2], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
-            <ColumnDefinition Width="{Binding ColumnWidths[3], RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            <ColumnDefinition Width="{Binding ColumnWidths[0], RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <ColumnDefinition Width="{Binding ColumnWidths[1], RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <ColumnDefinition Width="{Binding ColumnWidths[2], RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <ColumnDefinition Width="{Binding ColumnWidths[3], RelativeSource={RelativeSource AncestorType=UserControl}}" />
         </Grid.ColumnDefinitions>
-        
-        <TextBox Name="FileType" TextWrapping="Wrap" CaretBrush="White"  Margin="0,5,0,0" VerticalAlignment="Stretch"
-             TextDecorations="None" 
-             TextAlignment="Center" BorderThickness="1,1,1,1" 
-             Text="{Binding Type}" FontSize="12" Background="#00ffffff"
-             Foreground="White" Cursor="IBeam"
-        ></TextBox>
-        <TextBox Name="FilePath" TextWrapping="Wrap" CaretBrush="White" Margin="0,5,0,0" VerticalAlignment="Stretch"
-         Grid.Column="1" TextDecorations="None" 
-         TextAlignment="Center" BorderThickness="0,1,1,1" 
-         Text="{Binding Path}" FontSize="12" Background="#00ffffff"
-         Foreground="White" Cursor="IBeam"
-        >
+
+        <TextBox Name="FileType"
+                 TextWrapping="Wrap"
+                 CaretBrush="White"
+                 Margin="0,5,0,0"
+                 VerticalAlignment="Center"
+                 TextDecorations="None"
+                 TextAlignment="Center"
+                 BorderThickness="1,1,1,1"
+                 Text="{Binding Type}"
+                 FontSize="12"
+                 Background="#00ffffff"
+                 Foreground="White"
+                 Cursor="IBeam"
+                 Height="35"
+                 VerticalContentAlignment="Center"></TextBox>
+        <TextBox Name="FilePath"
+                 TextWrapping="Wrap"
+                 CaretBrush="White"
+                 Margin="0,5,0,0"
+                 VerticalAlignment="Stretch"
+                 Grid.Column="1"
+                 TextDecorations="None"
+                 TextAlignment="Center"
+                 BorderThickness="1,1,1,1"
+                 Text="{Binding Path}"
+                 FontSize="12"
+                 Background="#00ffffff"
+                 Foreground="White"
+                 Cursor="IBeam"
+                 Height="35"
+                 VerticalContentAlignment="Center">
         </TextBox>
-        <TextBox Name="SizeMb" TextWrapping="Wrap" CaretBrush="White" Margin="0,5,0,0" VerticalAlignment="Stretch"
-         Grid.Column="2" TextDecorations="None" 
-         TextAlignment="Center" BorderThickness="0,1,1,1" 
-         Text="{Binding SizeMB}" FontSize="12" Background="#00ffffff"
-         Foreground="White" Cursor="IBeam"
-        >
+        <TextBox Name="SizeB"
+                 TextWrapping="Wrap"
+                 CaretBrush="White"
+                 Margin="0,5,0,0"
+                 Grid.Column="2"
+                 TextDecorations="None"
+                 TextAlignment="Center"
+                 BorderThickness="1,1,1,1"
+                 Text="{Binding SizeB}"
+                 FontSize="12"
+                 Background="#00ffffff"
+                 IsReadOnly="True"
+                 Foreground="White"
+                 Height="35"
+                 VerticalContentAlignment="Center">
         </TextBox>
-        <TextBox Name="FileTags" TextWrapping="Wrap" CaretBrush="White" Margin="0,5,0,0" VerticalAlignment="Stretch"
-         Grid.Column="3" TextDecorations="None" 
-         TextAlignment="Center" BorderThickness="1,1,1,1" 
-         Text="{Binding TagsDisplay}" FontSize="12" Background="#00ffffff"
-         Foreground="White"
-        >
+        <TextBox Name="FileTags"
+                 TextWrapping="Wrap"
+                 CaretBrush="White"
+                 Margin="0,5,0,0"
+                 VerticalAlignment="Stretch"
+                 Grid.Column="3"
+                 TextDecorations="None"
+                 TextAlignment="Center"
+                 BorderThickness="1,1,1,1"
+                 Text="{Binding TagsDisplay}"
+                 FontSize="12"
+                 Background="#00ffffff"
+                 Foreground="White"
+                 Height="35"
+                 VerticalContentAlignment="Center">
         </TextBox>
     </Grid>
     <!-- End of Entry Template -->
