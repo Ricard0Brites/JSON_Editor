@@ -1,7 +1,7 @@
 # 🚀 Project Name
 
 A **WPF (Windows Presentation Foundation)** application built in **C#** following the **MVVM (Model-View-ViewModel)** design pattern.  
-This project was made with the purpose of learning WPF and MVVM... It is a json editor that features CRUD operations and forms a JSON with file data (any file).
+This project was made with the purpose of learning WPF and MVVM... It is a json editor that features CRUD operations and forms a JSON with file paths.
 
 Example Generated Json:
 
