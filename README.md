@@ -45,7 +45,7 @@ Example Generated Json:
 - **C#** (.NET)  
 - **WPF** (Windows Presentation Foundation)  
 - **MVVM** pattern  
-- **Visual Studio / Rider** (IDE)
+- **Visual Studio 2022
 
 ---
 
